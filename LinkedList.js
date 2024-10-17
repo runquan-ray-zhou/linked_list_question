@@ -84,3 +84,26 @@ list.insert(5);
 console.log(
   util.inspect(list, { showHidden: false, depth: null, colors: true })
 );
+
+/*
+
+SingleLinkedList {
+  head: Node {
+    data: 6,
+    next: Node {
+      data: 1,
+      next: Node {
+        data: 2,
+        next: Node {
+          data: 3,
+          next: Node {
+            data: 4,
+            next: Node { data: 5, next: Node { data: 7, next: null } }
+          }
+        }
+      }
+    }
+  }
+}
+
+*/
