@@ -116,13 +116,17 @@ class SingleLinkedList {
     let foundNode = false;
     while (currentNode) {
       if (currentNode.data === target) {
-        currentNode.data = data;
+        const node = new Node(data);
+        node.next = currentNode.next;
+        currentNode.next = node;
         foundNode = true;
       }
       currentNode = currentNode.next;
     }
     if (!foundNode) {
       return `${target} not found, cannot insert`;
+    } else {
+      return `${target} found and inserted`;
     }
   }
 
@@ -130,6 +134,20 @@ class SingleLinkedList {
     //remove a node from the specified target
     //if node doesn't exists
     //return `${target} not found, cannot remove`;
+    let currentNode = this.head;
+    let removed = false;
+    while (currentNode) {
+      if (currentNode.next.data === target) {
+        currentNode.next = currentNode.next.next;
+        removed = true;
+      }
+      currentNode = currentNode.next;
+    }
+    if (!removed) {
+      return `${target} not found, cannot remove`;
+    } else {
+      return `${target} found and removed`;
+    }
   }
 }
 
@@ -149,7 +167,7 @@ list.push(7);
 console.log(list.showList());
 console.log(list.getTargetNode(7));
 console.log(list.insertByTarget(7, 55));
-// console.log(list.removeByTarget(55));
+console.log(list.removeByTarget(55));
 console.log(list.getListSize());
 // Sum the elements in the list
 console.log("Sum of the list:", list.sumList());
