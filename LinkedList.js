@@ -26,6 +26,13 @@ class SingleLinkedList {
 
   sumList() {
     //return the sume of the entire list
+    let sum = 0;
+    let currentNode = this.head;
+    while (currentNode) {
+      sum = sum + currentNode.data;
+      currentNode = currentNode.next;
+    }
+    return sum;
   }
 
   insert(data) {
@@ -116,7 +123,7 @@ console.log(list.showList());
 // console.log(list.removeByTarget(55));
 // console.log(list.getListSize())
 // Sum the elements in the list
-// console.log("Sum of the list:", list.sumList());
+console.log("Sum of the list:", list.sumList());
 
 console.log(
   util.inspect(list, { showHidden: false, depth: null, colors: true })
