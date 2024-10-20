@@ -112,6 +112,18 @@ class SingleLinkedList {
     //insert a node to the specified target
     //if node doesn't exists
     //return `${target} not found, cannot insert`;
+    let currentNode = this.head;
+    let foundNode = false;
+    while (currentNode) {
+      if (currentNode.data === target) {
+        currentNode.data = data;
+        foundNode = true;
+      }
+      currentNode = currentNode.next;
+    }
+    if (!foundNode) {
+      return `${target} not found, cannot insert`;
+    }
   }
 
   removeByTarget(target) {
@@ -136,7 +148,7 @@ list.push(7);
 // Display the list
 console.log(list.showList());
 console.log(list.getTargetNode(7));
-// console.log(list.insertByTarget(7, 55));
+console.log(list.insertByTarget(7, 55));
 // console.log(list.removeByTarget(55));
 console.log(list.getListSize());
 // Sum the elements in the list
