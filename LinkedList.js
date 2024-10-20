@@ -78,17 +78,34 @@ class SingleLinkedList {
 
   getListSize() {
     //return the size of the list
+    let nodeCount = 0;
+    let currentNode = this.head;
+    while (currentNode) {
+      nodeCount++;
+      currentNode = currentNode.next;
+    }
+    return nodeCount;
   }
 
   printEntireList() {
     //printing out the entire list
     //Clue is somewhere in this file
+    return this;
   }
 
   getTargetNode(target) {
     //return a specific node
     //if node doesn't exists
     //return `Target ${target} not found`;
+
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.data === target) {
+        return currentNode;
+      }
+      currentNode = currentNode.next;
+    }
+    return `Target ${target} not found`;
   }
 
   insertByTarget(target, data) {
@@ -118,10 +135,10 @@ list.prepend(6);
 list.push(7);
 // Display the list
 console.log(list.showList());
-// console.log(list.getTargetNode(7))
+console.log(list.getTargetNode(7));
 // console.log(list.insertByTarget(7, 55));
 // console.log(list.removeByTarget(55));
-// console.log(list.getListSize())
+console.log(list.getListSize());
 // Sum the elements in the list
 console.log("Sum of the list:", list.sumList());
 
