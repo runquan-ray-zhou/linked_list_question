@@ -15,6 +15,13 @@ class SingleLinkedList {
   showList() {
     //show the list of node in this format
     //6 ==>1 ==>2 ==>3 ==>4 ==>5 ==>7 ==> null
+    let listFormat = "";
+    let currentNode = this.head;
+    while (currentNode) {
+      listFormat = listFormat + `${currentNode.data} ==>`;
+      currentNode = currentNode.next;
+    }
+    return listFormat + " null";
   }
 
   sumList() {
@@ -23,14 +30,43 @@ class SingleLinkedList {
 
   insert(data) {
     //add a note to the list
+    const node = new Node(data); // initialize new node
+    if (this.head === null) {
+      // check if head is null, make sure if there is any node attached to head
+      this.head = node; // if head is null, attach new node to list
+    } else {
+      let currentNode = this.head;
+      while (currentNode.next !== null) {
+        currentNode = currentNode.next;
+      }
+      currentNode.next = node;
+    }
   }
 
   prepend(data) {
     //add it to the front of the list
+    if (this.head === null) {
+      this.head = new Node(data);
+    } else {
+      const node = new Node(data);
+      node.next = this.head;
+      this.head = node;
+    }
   }
 
   push(data) {
     //added to the end of the list
+    const node = new Node(data); // initialize new node
+    if (this.head === null) {
+      // check if head is null, make sure if there is any node attached to head
+      this.head = node; // if head is null, attach new node to list
+    } else {
+      let currentNode = this.head;
+      while (currentNode.next !== null) {
+        currentNode = currentNode.next;
+      }
+      currentNode.next = node;
+    }
   }
 
   getListSize() {
@@ -63,6 +99,7 @@ class SingleLinkedList {
 
 // Create a linked list
 const list = new SingleLinkedList();
+console.log(list);
 
 // Insert nodes into the list
 list.insert(1);
@@ -70,10 +107,10 @@ list.insert(2);
 list.insert(3);
 list.insert(4);
 list.insert(5);
-// list.prepend(6);
-// list.push(7);
+list.prepend(6);
+list.push(7);
 // Display the list
-// console.log(list.showList())
+console.log(list.showList());
 // console.log(list.getTargetNode(7))
 // console.log(list.insertByTarget(7, 55));
 // console.log(list.removeByTarget(55));
